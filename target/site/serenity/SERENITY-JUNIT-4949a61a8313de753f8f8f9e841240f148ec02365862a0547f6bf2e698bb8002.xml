@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Registro de usuario" skipped="0" tests="1" time="8.33" timestamp="2023-01-02 03:51:17"><testcase name="Registro exitoso"><failure message="&#10;Expected: a string containing &quot;QpwL5tkasdnpja7X4&quot;&#10;     but: was &quot;{&#10;    &quot;id&quot;: 4,&#10;    &quot;token&quot;: &quot;QpwL5tke4Pnpja7X4&quot;&#10;}&quot;" type="java.lang.AssertionError">
+Expected: a string containing "QpwL5tkasdnpja7X4"
+     but: was "{
+    "id": 4,
+    "token": "QpwL5tke4Pnpja7X4"
+}"</failure><system-err>
+Expected: a string containing "QpwL5tkasdnpja7X4"
+     but: was "{
+    "id": 4,
+    "token": "QpwL5tke4Pnpja7X4"
+}"&#13;
+co.com.sofka.stepdefinitions.PostStepDefinitions.obtendraUnTokenDeAutenticacion(PostStepDefinitions.java:47)&#13;
+✽.obtendra un token de autenticacion.(file:///C:/Users/juan.cardona/Desktop/SofkaU/ORANGE%20CLONE/reto2022qaciclo1/PracticaSerenityBDDServices/src/test/resources/features/reqres-post.feature:9)&#13;
+</system-err></testcase></testsuite>

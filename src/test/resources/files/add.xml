@@ -1,0 +1,13 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <tem:Add>
+            <tem:intA>[intA]</tem:intA>
+            <tem:intB>[intB]</tem:intB>
+        </tem:Add>
+    </soapenv:Body>
+</soapenv:Envelope>
+
+
+
+

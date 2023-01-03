@@ -1,0 +1,88 @@
+apply plugin: 'java'
+apply plugin: 'java-library'
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.aggregator'
+apply plugin: 'org.sonarqube'
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.2.12")
+        classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.0")
+        classpath "net.serenity-bdd:serenity-single-page-report:2.2.12"
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "reto2ApiRest"
+        property "sonar.projectName", "reto2ApiRest"
+        property "sonar.java.source", "src"
+        property "sonar.host.url", "http://18.204.4.74:9000"
+        property "sonar.login", "2bab52b849accbc0ace706a4cb74a0bc0e05d897"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.coverage.exclusions", "**/*.java"
+    }
+}
+
+serenity {
+    reports = ["single-page-html"]
+}
+
+ext {
+    serenityVersion = '2.2.9'
+    serenityCucumberVersion = '2.2.6'
+    apachePoiVersion = '3.17'
+    jacksonVersion = '2.11.3'
+}
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+dependencies {
+    implementation group: 'net.serenity-bdd', name: 'serenity-core',                 version: serenityVersion
+    implementation group: 'net.serenity-bdd', name: 'serenity-junit',                version: serenityVersion
+    implementation group: 'net.serenity-bdd', name: 'serenity-screenplay',           version: serenityVersion
+    implementation group: 'net.serenity-bdd', name: 'serenity-screenplay-webdriver', version: serenityVersion
+    implementation group: 'net.serenity-bdd', name: 'serenity-single-page-report',   version: serenityVersion
+    implementation group: 'net.serenity-bdd', name: 'serenity-assertions',           version: serenityVersion
+    implementation group: 'net.serenity-bdd', name: 'serenity-ensure',               version: serenityVersion
+    implementation group: 'net.serenity-bdd', name: 'serenity-screenplay-rest',      version: serenityVersion
+    implementation group: 'net.serenity-bdd', name: 'serenity-cucumber5',            version: serenityCucumberVersion
+
+    implementation group: 'log4j', name: 'log4j', version: '1.2.17'
+
+    implementation group: 'com.fasterxml.jackson.core',       name: 'jackson-databind',        version: jacksonVersion
+    implementation group: 'com.fasterxml.jackson.datatype',   name: 'jackson-datatype-jsr310', version: jacksonVersion
+    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml',  version: jacksonVersion
+    implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    api group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+tasks.withType(Test){
+    systemProperties = System.properties
+    maxParallelForks = Runtime.runtime.availableProcessors()
+}
+
+gradle.startParameter.continueOnFailure = true
+
+
+test {
+    useJUnitPlatform()
+}
