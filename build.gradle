@@ -19,18 +19,6 @@ buildscript {
     }
 }
 
-sonarqube {
-    properties {
-        property "sonar.projectKey", "reto2ApiRest"
-        property "sonar.projectName", "reto2ApiRest"
-        property "sonar.java.source", "src"
-        property "sonar.host.url", "http://18.204.4.74:9000"
-        property "sonar.login", "2bab52b849accbc0ace706a4cb74a0bc0e05d897"
-        property "sonar.sourceEncoding", "UTF-8"
-        property "sonar.coverage.exclusions", "**/*.java"
-    }
-}
-
 serenity {
     reports = ["single-page-html"]
 }
